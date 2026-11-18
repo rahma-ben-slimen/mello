@@ -1,0 +1,151 @@
+
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* =================================
+   MELLO - GLOBAL COLOR PALETTE
+================================= */
+
+:root {
+  --mello-linen: #F5F1EA;
+  --mello-khaki: #D7C9B8;
+  --mello-camel: #B2967D;
+  --mello-cocoa: #7D5A44;
+  --mello-espresso: #4A342A;
+
+  /* Semantic colors */
+  --mello-background: var(--mello-linen);
+  --mello-surface: #FFFFFF;
+  --mello-primary: var(--mello-camel);
+  --mello-primary-hover: var(--mello-cocoa);
+  --mello-text: var(--mello-espresso);
+  --mello-muted: #88786D;
+  --mello-border: var(--mello-khaki);
+
+  --mello-radius: 14px;
+}
+
+/* GLOBAL */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--mello-background);
+  color: var(--mello-text);
+  font-family: Arial, sans-serif;
+}
+
+app-root {
+  display: block;
+  width: 100%;
+}
+
+/* CARDS */
+
+.card {
+  background: var(--mello-surface);
+  border: 1px solid var(--mello-border);
+  border-radius: var(--mello-radius);
+}
+
+/* AUTHENTICATION */
+
+.card-auth {
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background: var(--mello-surface);
+  border: 1px solid var(--mello-border);
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(74, 52, 42, 0.08);
+}
+
+.card-auth,
+.card-auth h2,
+.card-auth label,
+.card-auth .text-muted,
+.card-auth .form-text {
+  color: var(--mello-text);
+}
+
+.card-auth a {
+  color: var(--mello-cocoa);
+}
+
+/* INPUTS */
+
+.form-control,
+.form-select {
+  border: 1px solid var(--mello-border);
+  border-radius: 10px;
+  padding: 11px 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--mello-camel);
+  box-shadow: 0 0 0 3px rgba(178, 150, 125, 0.2);
+}
+
+/* BUTTONS */
+
+.btn-mello,
+.btn-primary {
+  background-color: var(--mello-camel);
+  border-color: var(--mello-camel);
+  color: #FFFFFF;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.btn-mello:hover,
+.btn-primary:hover {
+  background-color: var(--mello-cocoa);
+  border-color: var(--mello-cocoa);
+  color: #FFFFFF;
+}
+
+/* HEADINGS */
+
+h1, h2, h3, h4, h5 {
+  color: var(--mello-espresso);
+}
+
+/* LINKS */
+
+a {
+  color: var(--mello-cocoa);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--mello-espresso);
+}
+
+/* LOGO */
+
+.logo-auth {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 18px;
+  padding: 18px;
+  border-radius: 50%;
+  background: var(--mello-linen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+  .card-auth {
+    margin: 15px auto;
+    padding: 20px;
+  }
+}

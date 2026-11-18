@@ -1,0 +1,116 @@
+<div class="card card-auth shadow border-0 rounded-4">
+  <div class="card-body p-4">
+
+    <div class="logo-circle">
+      <img src="/logo-mello.jpg" alt="Logo Mello" class="logo-auth">
+    </div>
+
+    <h2 class="fw-bold">Créer un compte</h2>
+    <p class="text-muted border-bottom pb-3">Rejoignez Mello pour trouver un coach ou proposer vos services.</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Nom</label>
+        <input type="text" class="form-control" formControlName="nom" placeholder="ex: Ben Ali"
+          [class.is-invalid]="form.controls.nom.touched && form.controls.nom.invalid" />
+        <div class="invalid-feedback">Nom obligatoire</div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Prénom</label>
+        <input type="text" class="form-control" formControlName="prenom" placeholder="ex: Sara"
+          [class.is-invalid]="form.controls.prenom.touched && form.controls.prenom.invalid" />
+        <div class="invalid-feedback">Prénom obligatoire</div>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label fw-semibold">Email</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="exemple@mail.com"
+          [class.is-invalid]="form.controls.email.touched && form.controls.email.invalid" />
+        <div class="invalid-feedback">Email invalide</div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Téléphone</label>
+        <input type="tel" class="form-control" formControlName="telephone" placeholder="8 chiffres"
+          [class.is-invalid]="form.controls.telephone.touched && form.controls.telephone.invalid" />
+        <div class="invalid-feedback">8 chiffres requis</div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Date de naissance</label>
+        <input type="date" class="form-control" formControlName="dateNaissance"
+          [class.is-invalid]="form.controls.dateNaissance.touched && form.controls.dateNaissance.invalid" />
+        <div class="invalid-feedback">Date de naissance obligatoire</div>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label fw-semibold">Je suis</label>
+        <select class="form-select" formControlName="role">
+          <option value="client">Client</option>
+          <option value="coach">Coach</option>
+        </select>
+      </div>
+
+      @if (estCoach) {
+        <div class="col-12">
+          <label class="form-label fw-semibold">Spécialité</label>
+          <select class="form-select" formControlName="specialite">
+            <option value="">Choisir...</option>
+            <option>Gestion du stress</option>
+            <option>Confiance en soi</option>
+            <option>Carrière</option>
+            <option>Relations</option>
+            <option>Bien-être</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label fw-semibold">Années d'expérience</label>
+          <div class="input-group">
+            <button type="button" class="btn btn-outline-secondary" (click)="changerExperience(-1)">−</button>
+            <input type="number" class="form-control text-center" formControlName="experience" readonly />
+            <button type="button" class="btn btn-outline-secondary" (click)="changerExperience(1)">+</button>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label fw-semibold">Diplôme</label>
+          <input type="text" class="form-control" formControlName="diplome"
+            placeholder="ex: Master en psychologie clinique" />
+        </div>
+
+        <div class="col-12">
+          <label class="form-label fw-semibold">Présentation</label>
+          <textarea class="form-control" rows="4" maxlength="200" formControlName="bio"
+            placeholder="Décrivez brièvement votre parcours, votre approche..."></textarea>
+          <div class="form-text text-end">{{ bioLength }}/200</div>
+        </div>
+      }
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Mot de passe</label>
+        <input type="password" class="form-control" formControlName="password"
+          [class.is-invalid]="form.controls.password.touched && form.controls.password.invalid" />
+        <div class="invalid-feedback">6 caractères minimum</div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Confirmer</label>
+        <input type="password" class="form-control" formControlName="confirm" />
+      </div>
+
+      @if (erreur) {
+        <div class="col-12"><div class="alert alert-danger mb-0">{{ erreur }}</div></div>
+      }
+
+      <div class="col-12 d-grid">
+        <button type="submit" class="btn btn-mello btn-lg">S'inscrire</button>
+      </div>
+    </form>
+
+    <p class="text-center mt-3 mb-0">Déjà inscrit ? <a routerLink="/login">Se connecter</a></p>
+  </div>
+</div>

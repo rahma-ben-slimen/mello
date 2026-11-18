@@ -1,0 +1,36 @@
+<div class="card card-auth shadow border-0 rounded-4" style="max-width: 420px;">
+  <div class="card-body p-4">
+    <img src="logo-mello.jpg" alt="Logo Mello" class="logo-auth">
+    <h2 class="fw-bold">Connexion à Mello</h2>
+    <p class="text-muted border-bottom pb-3">Heureux de vous revoir !</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+      <div class="col-12">
+        <label class="form-label fw-semibold">Email</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="exemple@mail.com"
+          [class.is-invalid]="form.controls.email.touched && form.controls.email.invalid" />
+        <div class="invalid-feedback">Email invalide</div>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label fw-semibold">Mot de passe</label>
+        <input type="password" class="form-control" formControlName="password"
+          [class.is-invalid]="form.controls.password.touched && form.controls.password.invalid" />
+        <div class="invalid-feedback">6 caractères minimum</div>
+      </div>
+
+      @if (erreur) {
+        <div class="col-12"><div class="alert alert-danger mb-0">{{ erreur }}</div></div>
+      }
+
+      <div class="col-12 d-grid">
+        <button type="submit" class="btn btn-mello btn-lg"
+        [disabled]="loading">
+  {{ loading ? 'Connexion...' : 'Se connecter' }}
+</button>
+      </div>
+    </form>
+
+    <p class="text-center mt-3 mb-0">Pas de compte ? <a routerLink="/register">S'inscrire</a></p>
+  </div>
+</div>
